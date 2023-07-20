@@ -13,7 +13,16 @@ function addIngredientToList(ingredient) {
   const listItem = document.createElement("li");
   listItem.classList.add("item");
   listItem.textContent = ingredient;
-  ingredientsList.appendChild(listItem);
+  return listItem;
 }
 
-ingredients.forEach((ingredient) => addIngredientToList(ingredient));
+const fragment = document.createDocumentFragment();
+
+ingredients.forEach((ingredient) => {
+  const listItem = addIngredientToList(ingredient);
+  fragment.appendChild(listItem);
+});
+
+ingredientsList.appendChild(fragment);
+
+
